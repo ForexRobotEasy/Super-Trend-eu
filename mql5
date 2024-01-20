@@ -1,0 +1,61 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                        Super Trend eu            |
+//|                      Developed by Forex Robot Easy Team           |
+//|                      Website: forexroboteasy.com                  |
+//+------------------------------------------------------------------+
+#property strict
+
+// Global variables
+double R2; // R2 parameter
+double R3; // R3 parameter
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+    // Calculate R2
+    double pivotPoint = (High[0] + Low[0] + Close[0]) / 3;
+    R2 = pivotPoint * (High[0] - Low[0]);
+    
+    // Calculate R3
+    R3 = MathPow(High[0], 2);
+    
+    // Print calculated values
+    Print('R2: ', R2);
+    Print('R3: ', R3);
+    
+    return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+    // Perform trend analysis using R2 and R3
+    if (R2 > R3)
+    {
+        // Market is in an uptrend
+        // Provide insights on potential entries, exits, and stop levels for traders
+        // Implement your trading strategy here
+        Print('Market is in an uptrend');
+    }
+    else
+    {
+        // Market is in a downtrend
+        // Provide insights on potential entries, exits, and stop levels for traders
+        // Implement your trading strategy here
+        Print('Market is in a downtrend');
+    }
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+    // Perform necessary deinitialization tasks
+    Print('Super Trend eu Expert Advisor deinitialized');
+}
